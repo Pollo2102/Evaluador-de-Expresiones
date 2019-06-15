@@ -1,0 +1,2 @@
+#!/bin/bash
+rm src/EvalExpr && g++ -o src/EvalExpr src/EvalExpr.cpp src/functions.cpp src/CustomRegex.cpp
