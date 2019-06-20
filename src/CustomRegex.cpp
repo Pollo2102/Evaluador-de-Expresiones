@@ -1,7 +1,10 @@
 #include "CustomRegex.h"
 
-#define ARITHMETIC_EXPRESSION "[\\(|\\[]?([\\)[:digit:]]+[\\+|\\-|\\*|\\/]?)+[\\)|\\]]?"
-#define ARITHMETIC_EX "([[:digit:]]+[\\+|\\-|\\*|\\/]?)+"
+#define ARITHM "\\A(?=.*(\\)|\\d)\\z)[\\(|\\[]?([[:digit:]]+\\)?[\\+|\\-|\\*|\\/]?)+[\\)|\\]]?"
+
+#define ARITHMETIC_EXPRESSION "(\\(|\\[)?([[:digit:]]+(\\.\\d+)?\\)?[\\+|\\-|\\*|\\/]?)+[\\)|\\]]?"
+
+#define ARITHMETIC_EXPRE "(\\(|\\[)?([[:digit:]]+\\)?[\\+|\\-|\\*|\\/]?)+[\\)|\\]]?"
 
 using namespace std;
 
