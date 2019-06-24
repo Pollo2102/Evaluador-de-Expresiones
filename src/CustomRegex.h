@@ -10,7 +10,6 @@ public:
     ~CustomRegex();
 
     bool checkExpression(std::string input); // regex_match
-    std::string getPostFixExpression(std::string input); // regex_search
 };
 
 #endif // !CUSTOMREGEX_H

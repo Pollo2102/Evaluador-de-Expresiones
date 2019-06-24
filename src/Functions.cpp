@@ -8,6 +8,33 @@ using namespace std;
 Functions::Functions() {}
 Functions::~Functions() {}
 
+void Functions::mainMenu()
+{
+    string expression;
+    uint16_t opcion = 0;
+    while (opcion != 2)
+    {
+    cout << "Evaluador de Expresiones\n";
+    cout << "1. Evaluar Expresión.\n";
+    cout << "2. Salir.\n";
+    cin >> opcion;
+    cout << opcion;
+
+    if (int result; /* c++17 */ opcion == 1)
+    {
+        cout << "Type the expression: " << endl;
+        cin >> expression;
+        result = toPostFix(expression);
+        cout << endl << "Result: " << result << endl;
+    }
+    else
+    {
+        opcion = 2;
+    }
+
+    }
+}
+
 float Functions::toPostFix(string expression)
 {
     cout << "EXPRESSION: " << expression << endl;
@@ -30,7 +57,6 @@ float Functions::toPostFix(string expression)
 
     string number;
     string operators;
-    int flag;
 
     for (size_t i = 0; i < expression.length(); i++)
     {
@@ -53,23 +79,35 @@ float Functions::toPostFix(string expression)
             {
                 if (expression.at(i) == '+' || expression.at(i) == '-')
                 {
-                    if (isOperator(operatorStack.at(j)))
+                    if (operatorStack.at(j) == '(')
+                    {
+                        break;
+                    }
+                    else
                     {
                         operators += operatorStack.at(j);
-                        cout << "Current operator: " << operators << endl;
                         resultS.push_back(operators);
                         operators.clear();
                         operatorStack.pop_back();
                     }
-                    else
+                }
+                else if (expression.at(i) == '*' || expression.at(i) == '/' || expression.at(i) == '%')
+                {
+                    if (operatorStack.at(j) == '-' || operatorStack.at(j) == '+' || operatorStack.at(j) == '(')
                     {
-                        cout << " Break Point";
                         break;
                     }
+                    else
+                    {
+                        operators += operatorStack.at(j);
+                        resultS.push_back(operators);
+                        operators.clear();
+                        operatorStack.pop_back();
+                    }
                 }
-                else
+                else 
                 {
-                    if (isOperator(operatorStack.at(j)) && (expression.at(i) == '+' || expression.at(i) == '-'))
+                    if (operatorStack.at(j) != '^' || operatorStack.at(j) == '(')
                     {
                         break;
                     }
@@ -96,9 +134,10 @@ float Functions::toPostFix(string expression)
                 else
                 {
                     operators.clear();
-                    operators += operatorStack.at(operatorStack.size() - 1);
+                    operators += operatorStack.at(j);
                     resultS.push_back(operators);
                     operators.clear();
+                    operatorStack.pop_back();
                 }
             }
             

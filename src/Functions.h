@@ -11,6 +11,7 @@ public:
     Functions();
     ~Functions();
 
+    void mainMenu();
     float evaluateExpression(std::vector<std::string> resultStack);
     float toPostFix(std::string expression);
     bool isOperator(char a);

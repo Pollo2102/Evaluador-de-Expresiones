@@ -1,2 +1,2 @@
 #!/bin/bash
-rm src/EvalExpr && g++ -o src/EvalExpr src/EvalExpr.cpp src/functions.cpp src/CustomRegex.cpp
+g++ -std=gnu++17 -o src/EvalExpr src/EvalExpr.cpp src/Functions.cpp src/CustomRegex.cpp && ./src/EvalExpr

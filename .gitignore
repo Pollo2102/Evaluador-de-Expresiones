@@ -3,4 +3,5 @@ Project_Specifications.md
 .vscode
 src/EvalExpr.exe
 src/EvalExpr
+src/tests
 tests-build
